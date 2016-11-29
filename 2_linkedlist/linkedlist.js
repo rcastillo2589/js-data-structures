@@ -146,4 +146,65 @@ linkedlist.prototype.back = function () {
     }
 }
 
+linkedlist.prototype.insert = function (position, value) {
+    var current = null;
+    var previous = null;
+    var count = 0;
+    var newNode = {
+        data: value,
+        next: null
+    };
+
+    if(this.head === null && position !== 0) {
+        return;
+    } else if(position > this.length) {
+        return;
+    } else if(position === 0) {
+        newNode.next = this.head;
+        this.head = newNode;
+    } else {
+        current = this.head;
+
+        while(current !== null) {
+            if(count === position) {
+                previous.next = newNode;
+                newNode.next = current;
+                this.length++;
+                return;
+            }
+            previous = current;
+            current = current.next;
+            count++;
+        }
+    }
+}
+
+linkedlist.prototype.erase = function (position) {
+    var current = null;
+    var previous = null;
+    var count = 0;
+
+    if(this.head === null) {
+        return;
+    } else if(position > this.length) {
+        return;
+    } else if(position === 0) {
+        this.head = this.head.next;
+        this.length--;
+    } else {
+        current = this.head;
+
+        while(current.next !== null) {
+            if(count === position) {
+                previous.next = current.next;
+                this.length--;
+                return;
+            }
+            previous = current;
+            current = current.next;
+            count++;
+        }
+    }
+}
+
 module.exports = linkedlist;

@@ -32,3 +32,16 @@ console.log("Popped back: " + ll.popBack());
 console.log("Popped back: " + ll.popBack());
 console.log("Back: " + ll.back());
 ll.print();
+
+ll.insert(0, "five");
+ll.insert(2, "six");
+ll.insert(4, "seven");
+console.log("Insert 5(0),6(2),7(4)");
+ll.print();
+
+ll.erase(3);
+ll.erase(0);
+ll.erase(2);
+
+console.log("Erase at 3,0,2");
+ll.print();
