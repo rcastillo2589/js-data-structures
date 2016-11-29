@@ -69,10 +69,10 @@ linkedlist.prototype.popFront = function () {
     if(this.head === null) {
         return null;
     } else {
-        value = this.head;
+        value = this.head.data;
         this.head = this.head.next;
         this.length--;
-        return value.data;
+        return value;
     }
 }
 
@@ -95,6 +95,54 @@ linkedlist.prototype.pushBack = function (value) {
 
         current.next = newNode;
         this.length++;
+    }
+}
+
+linkedlist.prototype.popBack = function () {
+    var value;
+    var current = null;
+    var previous = null;
+
+    if(this.head == null) {
+        return null;
+    } else {
+        current = this.head;
+
+        while(current.next !== null) {
+            previous = current;
+            current = current.next;
+        }
+
+        value = current.data;
+        previous.next = null;
+        this.length--;
+        return value;
+    }
+}
+
+linkedlist.prototype.front = function () {
+    if(this.head === null) {
+        return null;
+    } else {
+        return this.head.data;
+    }
+}
+
+linkedlist.prototype.back = function () {
+    var value;
+    var current = null;
+
+    if (this.head == null) {
+        return null;
+    } else {
+        current = this.head;
+
+        while(current.next !== null) {
+            current = current.next;
+        }
+
+        value = current.data;
+        return value;
     }
 }
 
