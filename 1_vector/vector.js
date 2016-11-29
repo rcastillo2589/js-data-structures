@@ -56,3 +56,5 @@ vector.prototype.print = function () {
     console.log(this.data[i]);
   }
 }
+
+module.exports = vector;
