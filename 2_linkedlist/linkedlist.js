@@ -46,6 +46,36 @@ linkedlist.prototype.valueAt = function (position) {
     }
 }
 
+linkedlist.prototype.pushFront = function (value) {
+    var current;
+    var newNode = {
+        data: value,
+        next: null
+    };
+
+    if(this.head === null) {
+        this.head = newNode;
+        this.length++;
+    } else {
+        newNode.next = this.head;
+        this.head = newNode;
+        this.length++;
+    }
+}
+
+linkedlist.prototype.popFront = function () {
+    var value = null;
+
+    if(this.head === null) {
+        return null;
+    } else {
+        value = this.head;
+        this.head = this.head.next;
+        this.length--;
+        return value.data;
+    }
+}
+
 linkedlist.prototype.pushBack = function (value) {
     var current;
     var newNode = {
