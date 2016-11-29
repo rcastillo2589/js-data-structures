@@ -45,3 +45,20 @@ ll.erase(2);
 
 console.log("Erase at 3,0,2");
 ll.print();
+console.log("Size: " + ll.size());
+console.log("2 From end: " + ll.valueFromEnd(2));
+console.log("1 From end: " + ll.valueFromEnd(1));
+
+ll.insert(0, "eight");
+ll.insert(2, "nine");
+ll.insert(4, "ten");
+ll.pushBack("eleven");
+ll.pushBack("twelve");
+ll.print();
+ll.reverse();
+ll.print();
+
+ll.remove("ten");
+ll.remove("zero");
+console.log("remove 10,0");
+ll.print();

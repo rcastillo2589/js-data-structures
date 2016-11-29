@@ -162,6 +162,7 @@ linkedlist.prototype.insert = function (position, value) {
     } else if(position === 0) {
         newNode.next = this.head;
         this.head = newNode;
+        this.length++;
     } else {
         current = this.head;
 
@@ -176,6 +177,7 @@ linkedlist.prototype.insert = function (position, value) {
             current = current.next;
             count++;
         }
+        return null;
     }
 }
 
@@ -203,6 +205,70 @@ linkedlist.prototype.erase = function (position) {
             previous = current;
             current = current.next;
             count++;
+        }
+    }
+}
+
+linkedlist.prototype.valueFromEnd = function (count) {
+    var fromFront = (this.length - count) - 1;
+    var current = null;
+    var increment = 0;
+
+    if(this.head === null) {
+        return null;
+    } else {
+        current = this.head;
+
+        while(current !== null) {
+            if(fromFront === increment) {
+                return current.data;
+            }
+            current = current.next;
+            increment++;
+        }
+    }
+}
+
+linkedlist.prototype.reverse = function () {
+    var previous = null;
+    var current = null;
+    var front = null;
+
+    if(this.head === null) {
+        return;
+    } else {
+        current = this.head;
+        front = this.head.next;
+
+        while(front !== null) {
+            current.next = previous;
+
+            previous = current;
+            current = front;
+            front = front.next;
+        }
+        current.next = previous;
+        this.head = current;
+    }
+}
+
+linkedlist.prototype.remove = function (value) {
+    var current = null;
+    var previous = null;
+
+    if(this.head === null) {
+        return;
+    } else {
+        current = this.head;
+
+        while(current.next !== null) {
+            if(current.data === value) {
+                previous.next = current.next;
+                this.length--;
+                return;
+            }
+            previous = current;
+            current = current.next;
         }
     }
 }
